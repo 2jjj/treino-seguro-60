@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Treino Seguro 60+ — volte a treinar com segurança</title>
 <meta name="description" content="Guia prático em PDF para voltar a treinar com segurança depois dos 60: plano de 8 semanas, 5 movimentos essenciais e avisos de segurança. R$ 37." />
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="apple-touch-icon" href="favicon.png" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://2jjj.github.io/treino-seguro-60/" />
+<meta property="og:title" content="Treino Seguro 60+ — volte a treinar com segurança" />
+<meta property="og:description" content="Guia em PDF: 5 movimentos essenciais, plano de 8 semanas e checklist de segurança. R$ 37, acesso imediato." />
+<meta property="og:image" content="https://2jjj.github.io/treino-seguro-60/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="pt_BR" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -148,6 +159,47 @@
     .book { animation: none !important; }
   }
 </style>
+<!-- ============================================================
+     META PIXEL — cole o ID (somente números) entre as aspas.
+     Enquanto estiver vazio, nada é carregado.
+     ============================================================ -->
+<script>
+  window.META_PIXEL_ID = "";
+</script>
+<script>
+  (function () {
+    var pixelId = window.META_PIXEL_ID;
+    if (!pixelId) return;
+
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = "2.0";
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+
+    fbq("init", pixelId);
+    fbq("track", "PageView");
+    fbq("track", "ViewContent", {
+      content_name: "Treino Seguro 60+",
+      content_type: "product",
+      value: 37.0,
+      currency: "BRL"
+    });
+  })();
+</script>
+<!-- Verificação de domínio: quando a Meta fornecer o código, descomente e cole no content -->
+<!-- <meta name="facebook-domain-verification" content="" /> -->
 </head>
 <body>
 
@@ -320,6 +372,33 @@
   } else {
     reveals.forEach(el => el.classList.add("in"));
   }
+
+  const checkoutLinks = document.querySelectorAll('a[href*="pay.cakto.com.br"]');
+  const trackedKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid"];
+  const incoming = new URLSearchParams(window.location.search);
+  const forwarded = new URLSearchParams();
+
+  trackedKeys.forEach((key) => {
+    const value = incoming.get(key);
+    if (value) forwarded.set(key, value);
+  });
+
+  checkoutLinks.forEach((link) => {
+    const url = new URL(link.href);
+    forwarded.forEach((value, key) => url.searchParams.set(key, value));
+    link.href = url.toString();
+
+    link.addEventListener("click", () => {
+      if (window.META_PIXEL_ID && typeof fbq === "function") {
+        fbq("track", "InitiateCheckout", {
+          content_name: "Treino Seguro 60+",
+          content_type: "product",
+          value: 37.0,
+          currency: "BRL"
+        });
+      }
+    });
+  });
 </script>
 
 </body>
